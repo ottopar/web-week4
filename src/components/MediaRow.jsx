@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router';
 
 const MediaRow = (props) => {
-  const handleClick = () => {
-    setSelectedItem(item);
-  };
-
-  const {item, setSelectedItem} = props;
+  const {item} = props;
   return (
     <tr key={item.media_id}>
       <td>
@@ -18,7 +15,9 @@ const MediaRow = (props) => {
       <td>{item.filesize}</td>
       <td>{item.media_type}</td>
       <td>
-        <button onClick={handleClick}>View</button>
+        <Link to="single" state={{item}}>
+          View
+        </Link>
       </td>
     </tr>
   );
