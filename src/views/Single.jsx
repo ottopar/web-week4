@@ -15,7 +15,8 @@ const Single = () => {
         <img src={item.filename} alt={item.title} />
       )}
       <h3>Title: {item.title}</h3>
-      <p>{item.description}</p>
+      <p>Description: {item.description}</p>
+      <p>By: {item.username}</p>
     </>
   );
 };

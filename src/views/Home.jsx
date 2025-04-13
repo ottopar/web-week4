@@ -5,11 +5,20 @@ import {fetchData} from '../components/fetchData';
 
 const Home = () => {
   const [mediaArray, setMediaArray] = useState([]);
+  const mediaUrl = import.meta.env.VITE_MEDIA_API + '/media/';
+  const authUrl = import.meta.env.VITE_AUTH_API + '/users/';
 
   const getMedia = async () => {
     try {
-      const json = await fetchData('test.json');
-      setMediaArray(json);
+      const mediaJson = await fetchData(mediaUrl);
+
+      const mediaWithUsers = await Promise.all(
+        mediaJson.map(async (item) => {
+          const userData = await fetchData(authUrl + item.user_id);
+          return {...item, username: userData.username};
+        }),
+      );
+      setMediaArray(mediaWithUsers);
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -33,6 +42,7 @@ const Home = () => {
             <th>Created</th>
             <th>Size</th>
             <th>Type</th>
+            <th>Owner</th>
             <th>Operations</th>
           </tr>
         </thead>

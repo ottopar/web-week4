@@ -16,6 +16,7 @@ const SingleView = (props) => {
           )}
           <h2>Title: {item.title}</h2>
           <p>Description: {item.description}</p>
+          <p>By: {item.username}</p>
           <button onClick={() => setSelectedItem(null)}>Close</button>
         </dialog>
       )}
