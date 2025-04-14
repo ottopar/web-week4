@@ -59,6 +59,37 @@ const useAuthentication = () => {
 
 const useUser = () => {
   const getUserByToken = async () => {
-}
+    const token = localStorage.getItem('token');
+    const fetchOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer: ${token}`,
+      },
+    };
+    const userData = await fetchData(
+      import.meta.env.VITE_AUTH_API + '/users/token',
+      fetchOptions,
+    );
+    return userData;
+  };
 
-export {useMedia, useAuthentication};
+  const postUser = async (inputs) => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(inputs),
+    };
+    const userResult = await fetchData(
+      import.meta.env.VITE_AUTH_API + '/users/',
+      fetchOptions,
+    );
+    console.log('User result:', userResult);
+    return userResult;
+  };
+  return {getUserByToken, postUser};
+};
+
+export {useMedia, useAuthentication, useUser};
