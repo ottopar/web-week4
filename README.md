@@ -12,3 +12,10 @@ Linkki branchiin: https://github.com/ottopar/web-week4/tree/hooks
 
 Open [wsk-hooks](https://users.metropolia.fi/~ottopar/wsk-hooks/) to view it in the browser.
 
+## CUSTOM HOOKS
+
+Linkki branchiin: https://github.com/ottopar/web-week4/tree/custom-hooks
+
+Open [custom-hooks](https://users.metropolia.fi/~ottopar/custom-hooks/) to view it in the browser.
+
+
