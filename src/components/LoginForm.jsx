@@ -1,20 +1,21 @@
 import useForm from '../hooks/formHooks';
-import {useAuthentication} from '../hooks/apiHooks';
-import {useNavigate} from 'react-router';
+import {useUserContext} from '../hooks/contextHooks';
 
 // LoginForm.jsx
 const LoginForm = () => {
-  const {postLogin} = useAuthentication();
-  const navigate = useNavigate();
+  const {handleLogin} = useUserContext();
+
   const initValues = {
     username: '',
     password: '',
   };
 
   const doLogin = async () => {
-    console.log(inputs);
-    await postLogin(inputs);
-    navigate('/');
+    try {
+      await handleLogin(inputs);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   const {inputs, handleInputChange, handleSubmit} = useForm(
@@ -27,20 +28,14 @@ const LoginForm = () => {
   return (
     <>
       <h1>Login</h1>
-      <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="loginuser">Username</label>
           <input
             name="username"
             type="text"
             id="loginuser"
-            onChange={(event) => {
-              handleInputChange(event);
-            }}
+            onChange={handleInputChange}
             autoComplete="username"
           />
         </div>
@@ -50,9 +45,7 @@ const LoginForm = () => {
             name="password"
             type="password"
             id="loginpassword"
-            onChange={(event) => {
-              handleInputChange(event);
-            }}
+            onChange={handleInputChange}
             autoComplete="current-password"
           />
         </div>
