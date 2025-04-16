@@ -22,6 +22,12 @@ Open [custom-hooks](https://users.metropolia.fi/~ottopar/custom-hooks/) to view 
 
 Linkki branchiin: https://github.com/ottopar/web-week4/tree/forms
 
-Open [forms](https://users.metropolia.fi/~ottopar/forms/)
+Open [forms](https://users.metropolia.fi/~ottopar/forms/) to view it in the browser.
+
+## CONTEXT
+
+Linkki branchiin: https://github.com/ottopar/web-week4/tree/context
+
+Open [context](https://users.metropolia.fi/~ottopar/context/) to view it in the browser.
 
 
