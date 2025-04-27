@@ -25,7 +25,10 @@ const Upload = () => {
     }
   };
 
-  const {inputs, handleInputChange, handleSubmit} = useForm(doUpload);
+  const {inputs, handleInputChange, handleSubmit} = useForm(doUpload, {
+    title: '', // Default value for title
+    description: '', // Default value for description
+  });
 
   const handleFileChange = (evt) => {
     if (evt.target.files) {
