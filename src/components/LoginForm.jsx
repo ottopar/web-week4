@@ -1,5 +1,6 @@
 import useForm from '../hooks/formHooks';
 import {useUserContext} from '../hooks/contextHooks';
+import TextInput from './ui/TextInput';
 
 // LoginForm.jsx
 const LoginForm = () => {
@@ -27,11 +28,14 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="loginuser">Username</label>
-          <input
+      <h1 className="mb-6 text-center text-3xl font-bold">Login</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center justify-center"
+      >
+        <div className="flex w-4/5 flex-col">
+          <TextInput
+            label="loginuser"
             name="username"
             type="text"
             id="loginuser"
@@ -39,9 +43,9 @@ const LoginForm = () => {
             autoComplete="username"
           />
         </div>
-        <div>
-          <label htmlFor="loginpassword">Password</label>
-          <input
+        <div className="mt-4 flex w-4/5 flex-col">
+          <TextInput
+            label="loginpassword"
             name="password"
             type="password"
             id="loginpassword"
@@ -49,7 +53,12 @@ const LoginForm = () => {
             autoComplete="current-password"
           />
         </div>
-        <button type="submit">Login</button>
+        <button
+          type="submit"
+          className="mt-6 rounded bg-neutral-700 px-4 py-2 text-white hover:bg-neutral-900"
+        >
+          Login
+        </button>
       </form>
     </>
   );

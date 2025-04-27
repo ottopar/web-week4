@@ -6,7 +6,7 @@ import Upload from './views/Upload';
 import Single from './views/Single';
 import Login from './views/login';
 import Logout from './views/Logout';
-import {UserProvider} from './contexts/UserContext';
+import {UserProvider} from './contexts/userContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {

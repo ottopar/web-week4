@@ -12,26 +12,51 @@ const Layout = () => {
     <div>
       <header>
         <nav>
-          <ul>
+          <ul className="flex justify-end overflow-hidden bg-neutral-800">
             <li>
-              <Link to="/">Home</Link>
+              <Link
+                className="block p-4 text-center text-white hover:bg-neutral-900"
+                to="/"
+              >
+                Home
+              </Link>
             </li>
 
             {user ? (
               <>
                 <li>
-                  <Link to="/profile">Profile</Link>
+                  <Link
+                    className="block p-4 text-center text-white hover:bg-neutral-900"
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/upload">Upload</Link>
+                  <Link
+                    className="block p-4 text-center text-white hover:bg-neutral-900"
+                    to="/upload"
+                  >
+                    Upload
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/logout">Logout</Link>
+                  <Link
+                    className="block p-4 text-center text-white hover:bg-neutral-900"
+                    to="/logout"
+                  >
+                    Logout
+                  </Link>
                 </li>
               </>
             ) : (
               <li>
-                <Link to="/login">Login</Link>
+                <Link
+                  className="block p-4 text-center text-white hover:bg-neutral-900"
+                  to="/login"
+                >
+                  Login
+                </Link>
               </li>
             )}
           </ul>

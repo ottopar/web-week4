@@ -1,5 +1,6 @@
 import {useUser} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
+import TextInput from './ui/TextInput';
 
 const RegisterForm = () => {
   const {postUser} = useUser();
@@ -18,49 +19,45 @@ const RegisterForm = () => {
   );
   console.log('RegisterForm inputs:', inputs);
   return (
-    <div className="register-form">
-      <h2>Register</h2>
+    <div className="flex flex-col items-center">
+      <h2 className="mb-4 text-2xl font-bold">Register</h2>
       <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
+        onSubmit={handleSubmit}
+        className="flex w-full max-w-md flex-col items-center gap-4"
       >
-        <div>
-          <label htmlFor="registeruser">Username</label>
-          <input
-            name="username"
-            type="text"
-            id="registeruser"
-            onChange={(event) => {
-              handleInputChange(event);
-            }}
-            autoComplete="username"
-          />
-        </div>
-        <div>
-          <label htmlFor="registerpassword">Password</label>
-          <input
-            name="password"
-            type="password"
-            id="registerpassword"
-            onChange={(event) => {
-              handleInputChange(event);
-            }}
-            autoComplete="current-password"
-          />
-        </div>
-        <div>
-          <label htmlFor="registeremail">Email</label>
-          <input
-            name="email"
-            type="email"
-            id="registeremail"
-            onChange={(event) => {
-              handleInputChange(event);
-            }}
-          />
-        </div>
-        <button type="submit">Register</button>
+        <TextInput
+          label="Username"
+          id="registeruser"
+          name="username"
+          type="text"
+          onChange={handleInputChange}
+          value={inputs.username}
+          autoComplete="username"
+        />
+        <TextInput
+          label="Password"
+          id="registerpassword"
+          name="password"
+          type="password"
+          onChange={handleInputChange}
+          value={inputs.password}
+          autoComplete="current-password"
+        />
+        <TextInput
+          label="Email"
+          id="registeremail"
+          name="email"
+          type="email"
+          onChange={handleInputChange}
+          value={inputs.email}
+          autoComplete="email"
+        />
+        <button
+          type="submit"
+          className="mt-4 w-full rounded bg-stone-700 px-4 py-2 font-semibold text-white hover:bg-stone-900"
+        >
+          Register
+        </button>
       </form>
     </div>
   );

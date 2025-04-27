@@ -11,13 +11,17 @@ const Login = () => {
     setShowLogin(!showLogin);
   };
   return (
-    <>
-      <h1>{showLogin ? 'Login' : 'Register'}</h1>
-      <button onClick={toggleForm}>
+    <div className="flex flex-col items-center justify-center p-6">
+      <button
+        onClick={toggleForm}
+        className="mb-6 rounded bg-stone-700 px-4 py-2 text-white hover:bg-stone-900"
+      >
         {showLogin ? 'Switch to Register' : 'Switch to Login'}
       </button>
-      {showLogin ? <LoginForm /> : <RegisterForm />}
-    </>
+      <div className="w-full max-w-md">
+        {showLogin ? <LoginForm /> : <RegisterForm />}
+      </div>
+    </div>
   );
 };
 
