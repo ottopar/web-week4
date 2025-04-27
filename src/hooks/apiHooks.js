@@ -29,6 +29,51 @@ const useMedia = () => {
 
   console.log('Media array:', mediaArray);
 
+  // Function to modify media data
+  const modifyMedia = async (mediaId, updatedData, token) => {
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer: ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+    };
+
+    try {
+      const response = await fetchData(`${mediaUrl}${mediaId}`, fetchOptions);
+      console.log('Modify success:', response);
+
+      getMedia();
+      return response;
+    } catch (error) {
+      console.error('Modify failed:', error);
+      throw error;
+    }
+  };
+
+  const deleteMedia = async (mediaId, token) => {
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer: ${token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await fetchData(`${mediaUrl}${mediaId}`, fetchOptions);
+      console.log('Delete success:', response);
+
+      getMedia();
+      return response;
+    } catch (error) {
+      console.error('Delete failed:', error);
+      throw error;
+    }
+  };
+
+  // Post new media
   const postMedia = async (file, inputs, token) => {
     const data = {
       ...inputs,
@@ -47,7 +92,7 @@ const useMedia = () => {
     return await fetchData(`${mediaUrl}`, fetchOptions);
   };
 
-  return {mediaArray, postMedia};
+  return {mediaArray, postMedia, modifyMedia, deleteMedia};
 };
 
 const useAuthentication = () => {
